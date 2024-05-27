@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .inp {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            margin: 0 auto;
+            z-index: 99;
+        }
+
+        .fileUploader {
+            position: fixed;
+            right: 10px;
+            bottom: 30px;
+            left: 10px;
+            margin: 0 auto;
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <input class="fileUploader" type="file">
+    <img class="coolImg" src="./flatplan_55.png" alt="kek">
+    <input class="inp" min="0" max="5000" type="range">
+
+    <script>
+
+        const inpRange = document.querySelector('.inp');
+        const image = document.querySelector('.coolImg');
+        const fileUploader = document.querySelector('.fileUploader');
+
+        fileUploader.addEventListener('change', (event) => {
+            const url = window.URL.createObjectURL(event.target.files[0]);
+            image.src = url
+        })
+
+        inpRange.addEventListener('input', () => {
+            image.width = inpRange.value;
+        })
+    </script>
+</body>
+
+</html>
